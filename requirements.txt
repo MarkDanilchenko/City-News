@@ -1,0 +1,17 @@
+asgiref==3.7.2
+cffi==1.16.0
+crispy-bootstrap5==2023.10
+cryptography==41.0.5
+Django==4.2.7
+django-crispy-forms==2.1
+djangorestframework==3.14.0
+fuzzywuzzy==0.18.0
+Levenshtein==0.23.0
+pycparser==2.21
+PyMySQL==1.1.0
+python-dotenv==1.0.0
+python-Levenshtein==0.23.0
+pytz==2023.3.post1
+rapidfuzz==3.5.2
+sqlparse==0.4.4
+typing_extensions==4.8.0
