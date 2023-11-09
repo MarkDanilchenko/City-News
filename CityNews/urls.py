@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('CityNews__main.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/registartion', views.registration, name='registration'),
+    path('accounts/registration', views.registration, name='registration'),
     path('drf-api-auth/', include('rest_framework.urls')),
 ]
 
