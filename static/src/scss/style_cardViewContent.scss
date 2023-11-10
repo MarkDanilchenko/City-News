@@ -1,0 +1,107 @@
+.body__card {
+	min-height: 70vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container__card {
+	position: relative;
+	width: auto;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	transform-style: preserve-3d;
+	perspective: 500px;
+	margin: auto;
+}
+.container__card .box__card {
+	position: relative;
+	width: 275px;
+	height: 275px;
+	background: #000;
+	transition: 0.5s;
+	transform-style: preserve-3d;
+	overflow: hidden;
+	margin-right: 15px;
+	margin-top: 45px;
+    border-radius: 10px;
+}
+.container__card:hover .box__card {
+	transform: rotateY(25deg);
+}
+.container__card .box__card:hover ~ .box__card {
+	transform: rotateY(-25deg);
+}
+.container__card .box__card:hover {
+	transform: rotateY(0deg) scale(1.25);
+	z-index: 1;
+	box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+}
+.container__card .box__card .imgBx {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.container__card .box__card .imgBx:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(180deg, $custom_red, $custom_darkgrey);
+	z-index: 1;
+	opacity: 0;
+	transition: 0.5s;
+	mix-blend-mode: multiply;
+}
+.container__card .box__card:hover .imgBx:before {
+	opacity: 1;
+}
+.container__card .box__card .imgBx img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    background-size: cover;
+    opacity: 0.8;
+}
+.container__card .box__card .content__card {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	display: flex;
+	padding: 20px;
+	align-items: flex-end;
+	box-sizing: border-box;
+}
+.container__card .box__card .content__card h2 {
+	color: #fff;
+	transition: 0.5s;
+	text-transform: uppercase;
+    font-family: $font-family-JetBrains;
+	margin-bottom: 5px;
+	font-size: 20px;
+	transform: translateY(200px);
+	transition-delay: 0.3s;
+}
+.container__card .box__card:hover .content__card h2 {
+	transform: translateY(0px);
+}
+.container__card .box__card .content__card p {
+	color: #fff;
+	transition: 0.5s;
+	font-size: 14px;
+	transform: translateY(200px);
+	transition-delay: 0.4s;
+    text-align: center;
+}
+.container__card .box__card:hover .content__card p {
+	transform: translateY(0px);
+}
