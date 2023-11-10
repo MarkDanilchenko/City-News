@@ -1,0 +1,46 @@
+{% extends 'index.html' %} {% load static %} {% block content %}
+
+<div class="body__card">
+	<div class="container__card">
+		<div class="box__card">
+			<a href="" title="Latest news">
+				<div class="imgBx">
+					<img src="{% static 'IMG/News_bg.jpeg' %}" />
+				</div>
+				<div class="content__card">
+					<div>
+						<h2>News</h2>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="box__card">
+			<a href="" title="Facts">
+        <div class="imgBx">
+          <img src="{% static 'IMG/Facts_bg.jpg' %}" />
+        </div>
+        <div class="content__card">
+          <div>
+            <h2>Facts</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
+          </div>
+        </div>
+      </a>
+		</div>
+		<div class="box__card">
+			<a href="" title="Articles">
+        <div class="imgBx">
+          <img src="{% static 'IMG/' %}" />
+        </div>
+        <div class="content__card">
+          <div>
+            <h2>Articles</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
+          </div>
+        </div>
+      </a>
+		</div>
+	</div>
+</div>
+{% endblock %}

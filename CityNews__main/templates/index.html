@@ -21,6 +21,7 @@
 			<!-- HEADER -->
 			<!-- HEADER -->
 			<!-- HEADER -->
+
 			<header class="d-flex flex-wrap align-items-center justify-content-between py-3 border-bottom">
 				<a href="/" title="Home page" class="col-md-auto col-12 mb-md-0 mb-3 text-center">
 					<img src="{% static 'favicon_io/apple-touch-icon.png' %}" class="border border-3 rounded-3 border-light shadow-lg" alt="Home page logo" width="50px" height="50px" />
@@ -114,23 +115,15 @@
 				</div>
 				{% endif %}
 			</header>
+			<!-- MAIN -->
+			<!-- MAIN -->
+			<!-- MAIN -->
 
-			<!-- MAIN -->
-			<!-- MAIN -->
-			<!-- MAIN -->
-			{% if user.is_authenticated %}
-			<div id="content_main" class="border border-2 rounded rounded-2 mt-2 shadow-lg">
-				<div class="d-flex align-items-center flex-column mt-5">
-					<div class="logoString_h3 mb-3">
-						<h3 class="text-center">CityNews</h3>
-					</div>
-				</div>
-				{% block content %} {% endblock %}
-			</div>
-			{% else %}
+			{% block content %} 
 			<!-- label_row -->
 			<!-- label_row -->
 			<!-- label_row -->
+
 			<div class="row mt-5" id="myHomework_labelRow">
 				<div id="myHomework_label">
 					<h2>
@@ -153,12 +146,13 @@
 			<!-- greeting -->
 			<!-- greeting -->
 			<!-- greeting -->
+
 			<div class="d-flex flex-column align-items-center text-center">
 				<h3 class="logoString_h3" style="color: rgb(92, 92, 92)">CityNews App</h3>
 				<p class="text-center mt-3 mb-4">
 					News, interesting facts and other articles from around the City!
 					<br /><br />
-					<a href="" class="nav-link logInReg_mainpage"><b>Continue</b></a> <span class="text-small">without registration!</span>
+					<a href="/viewContent" class="nav-link logInReg_mainpage"><b>Continue</b></a> <span class="text-small">without registration!</span>
 				</p>
 				<hr style="width: 10rem" />
 				<span class="text-small">Some funtions are available only for <u>logged in</u> users.</span>
@@ -166,11 +160,11 @@
 				<span class="my-3">or</span>
 				<a href="{% url 'registration' %}" class="nav-link logInReg_mainpage" title="Register">Create an account!</a>
 			</div>
-			{% endif %}
+			{% endblock %}
+			<!-- FOOTER -->
+			<!-- FOOTER -->
+			<!-- FOOTER -->
 
-			<!-- FOOTER -->
-			<!-- FOOTER -->
-			<!-- FOOTER -->
 			<footer class="col-12 mt-3">
 				<ul class="nav justify-content-center">
 					<li class="nav-item"><a href="/" class="nav-link px-2" title="Home page">Home</a></li>
@@ -184,4 +178,7 @@
 		<script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
 		<script src="{% static 'dist/bundle.js' %}"></script>
 	</body>
+	<!-- <a href="https://ru.freepik.com/free-vector/did-you-know-interesting-fact-banner-with-megaphone_26569045.htm#query=facts&position=39&from_view=search&track=sph">Изображение от starline</a> на Freepik -->
+	<!-- Изображение от <a href="https://ru.freepik.com/free-photo/newspaper-background-concept_29016024.htm#page=3&query=news&position=2&from_view=search&track=sph">Freepik</a> -->
+	
 </html>
