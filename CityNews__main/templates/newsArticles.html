@@ -15,14 +15,14 @@
 		{% if user.is_superuser %}
 		<p class="text-small"><i>Add new and edit News and Articles only through the Admin panel!</i></p>
 		{% endif %}
-		<table class="table text-center table-striped table-hover table-responsive caption-top">
-            <caption>News and Articles</caption>
+		<table class="table text-center table-striped table-hover table-responsive caption-top" id="newsArticlesTable" style="cursor: pointer;">
+            <caption class="text-small"><i>News and Articles</i></caption>
 			<thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Publish Date</th>
-                    <th scope="col">Author</th>
+                    <th scope="col">Title &#9650; &#9660;</th>
+                    <th scope="col">Publish Date &#9650; &#9660;</th>
+                    <th scope="col">Author &#9650; &#9660;</th>
                     <th scope="col">#tags</th>
                     {% if user.is_superuser %}
                     <th scope="col">Delete</th>
@@ -32,7 +32,7 @@
 			<tbody class="table-group-divider">
                 {% for i in result %}
                 <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
+                    <td scope="row">{{ forloop.counter }}</td>
                     <td>{{ i.title }}</td>
                     <td>{{ i.publish_date|date:"Y-m-d" }}</td>
                     <td>{{ i.author }}</td>

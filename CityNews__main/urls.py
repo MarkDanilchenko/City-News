@@ -17,6 +17,4 @@ urlpatterns = [
         name="delete_newsArticles",
     ),
     path("newsArticles/search", views.newsArticles_search, name="newsArticles_search"),
-    # sortFuntions
-    
 ]
