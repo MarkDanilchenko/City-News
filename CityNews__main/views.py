@@ -54,15 +54,13 @@ def facts_search(request):
             result = models.Fact.objects.values_list()
             for i in models.Fact.objects.values_list():
                 for j in list(i):
-                    if fuzz.partial_ratio(searchFact, str(j)) > 50:
+                    if fuzz.partial_ratio(searchFact, str(j)) > 60:
                         break
                 else:
                     result = result.exclude(id=i[0])
             else:
-                print(f"----->>>>>{result}")
                 return render(request, "facts.html", {"result": result.values()})
     except:
-        print("Error")
         result = models.Fact.objects.all()
         return render(request, "facts.html", {"result": result})
 
@@ -70,5 +68,37 @@ def facts_search(request):
 # News Articles functions
 # News Articles functions
 def newsArticles(request):
-    result = models.NewsArticle.objects.all()
+    result = models.NewsArticles.objects.all()
     return render(request, "newsArticles.html", {"result": result})
+
+@staff_member_required
+def delete_newsArticles(request, id):
+    try:
+        if models.NewsArticle.objects.get(id=id):
+            models.NewsArticle.objects.get(id=id).delete()
+            result = models.NewsArticle.objects.all()
+            return render(request, "newsArticles.html", {"result": result})
+        else:
+            raise Exception
+    except:
+        result = models.NewsArticle.objects.all()
+        return render(request, "newsArticles.html", {"result": result})
+
+def newsArticles_search(request):
+    try:
+        searchNewsArticle = request.POST.get("searchNewsArticles")
+        if len(searchNewsArticle) == 0:
+            raise Exception
+        else:
+            result = models.NewsArticles.objects.values_list()
+            for i in models.NewsArticles.objects.values_list():
+                for j in list(i):
+                    if fuzz.partial_ratio(searchNewsArticle, str(j)) > 60:
+                        break
+                else:
+                    result = result.exclude(id=i[0])
+            else:
+                return render(request, "newsArticles.html", {"result": result.values()})
+    except:
+        result = models.NewsArticles.objects.all()
+        return render(request, "newsArticles.html", {"result": result})

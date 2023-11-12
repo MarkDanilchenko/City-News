@@ -1,6 +1,6 @@
 {% extends 'index.html' %} {% block content %} {% autoescape off %} {% if result %}
 <div class="row">
-	<div class="col-8 offset-2">
+	<div class="col-10 offset-1">
 		<div class="text-center logoString_h3 mt-3">
 			<h3 class="">News and Articles</h3>
 		</div>
@@ -15,11 +15,35 @@
 		{% if user.is_superuser %}
 		<p class="text-small"><i>Add new and edit News and Articles only through the Admin panel!</i></p>
 		{% endif %}
-		<ul>
-            {% for i in result %}
-            <li></li>
-            {% endfor %}
-        </ul>
+		<table class="table text-center table-striped table-hover table-responsive caption-top">
+            <caption>News and Articles</caption>
+			<thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Publish Date</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">#tags</th>
+                    {% if user.is_superuser %}
+                    <th scope="col">Delete</th>
+                    {% endif %}
+                </tr>
+            </thead>
+			<tbody class="table-group-divider">
+                {% for i in result %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.publish_date|date:"Y-m-d" }}</td>
+                    <td>{{ i.author }}</td>
+                    <td>{{ i.tags }}</td>
+                    {% if user.is_superuser %}
+                    <td><a href="{% url 'delete_newsArticles' i.id %}" class="nav-link me-3">&#10060;</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+		</table>
 		{% if user.is_superuser %}
 		<p class="text-small"><i>Add new and edit News and Articles only through the Admin panel!</i></p>
 		{% endif %}

@@ -35,7 +35,7 @@ class FactAdmin(admin.ModelAdmin):
 admin.site.register(models.Fact, FactAdmin)
 
 
-class NewsArticleAdmin(admin.ModelAdmin):
+class NewsArticlesAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Title", {"fields": ("title",)}),
         ("Author", {"fields": ("author",)}),
@@ -49,7 +49,7 @@ class NewsArticleAdmin(admin.ModelAdmin):
     search_fields = ("title", "tags", "author")
 
 
-admin.site.register(models.NewsArticle, NewsArticleAdmin)
+admin.site.register(models.NewsArticles, NewsArticlesAdmin)
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -67,7 +67,7 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(models.Comment, CommentAdmin)
 
 
-class SavedArticleAdmin(admin.ModelAdmin):
+class SavedArticlesAdmin(admin.ModelAdmin):
     fieldsets = (
         ("User", {"fields": ("user",)}),
         ("Article", {"fields": ("article",)}),
@@ -78,4 +78,4 @@ class SavedArticleAdmin(admin.ModelAdmin):
     search_fields = ("user", "article")
 
 
-admin.site.register(models.SavedArticle, SavedArticleAdmin)
+admin.site.register(models.SavedArticles, SavedArticlesAdmin)

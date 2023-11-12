@@ -4,14 +4,14 @@
 		<div class="text-center logoString_h3 mt-3">
 			<h3 class="">Facts</h3>
 		</div>
-			<form action="{% url 'facts_search' %}" method="post" enctype="multipart/form-data" class="d-flex justify-content-center align-items-start mb-3">
-				{% csrf_token %}
-				<div class="">
-					<input type="text" class="form-control" id="searchFact" name="searchFact" placeholder="&#128269;" style="text-align: right" aria-describedby="searchFact" />
-					<div id="searchFact" class="form-text">Search Facts</div>
-				</div>
-				<button type="submit" class="btn btn-outline-secondary ms-3">Search</button>
-			</form>
+		<form action="{% url 'facts_search' %}" method="post" enctype="multipart/form-data" class="d-flex justify-content-center align-items-start mb-3">
+			{% csrf_token %}
+			<div class="">
+				<input type="text" class="form-control" id="searchFact" name="searchFact" placeholder="&#128269;" style="text-align: right" aria-describedby="searchFact" />
+				<div id="searchFact" class="form-text">Search Facts</div>
+			</div>
+			<button type="submit" class="btn btn-outline-secondary ms-3">Search</button>
+		</form>
 		{% if user.is_superuser %}
 		<p class="text-small"><i>Add new and edit Facts only through the Admin panel!</i></p>
 		{% endif %}
@@ -19,7 +19,7 @@
 			{% for i in result %}
 			<li>
 				{% if user.is_superuser %}
-				<div class="d-flex justify-content-end" id="deleteFactBlock">
+				<div class="d-flex justify-content-end" id="deleteFactsBlock">
 					<a href="{% url 'delete_facts' i.id %}" class="nav-link me-3">&#10060;</a>
 				</div>
 				{% endif %}
@@ -41,7 +41,4 @@
 </div>
 {% if user.is_superuser %}
 <p class="text-small text-center"><i>Add new and edit Facts only through the Admin panel!</i></p>
-{% endif %}
-{% endif %} {% endautoescape %} {% endblock %}
-
-
+{% endif %} {% endif %} {% endautoescape %} {% endblock %}

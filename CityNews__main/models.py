@@ -51,7 +51,7 @@ class Fact(models.Model):
         return self.title
 
 
-class NewsArticle(models.Model):
+class NewsArticles(models.Model):
     title = models.CharField(
         max_length=255,
         blank=False,
@@ -127,7 +127,7 @@ class Comment(models.Model):
     )
 
     article = models.ForeignKey(
-        NewsArticle,
+        NewsArticles,
         on_delete=models.CASCADE,
         verbose_name="Comment - Article",
         help_text="Commented article",
@@ -140,9 +140,9 @@ class Comment(models.Model):
         return f"Comment: {self.text} by {self.author}. Publish date: {self.publish_date}. Article: {self.article}"
 
 
-class SavedArticle(models.Model):
+class SavedArticles(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    article = models.ForeignKey(NewsArticle, on_delete=models.CASCADE)
+    article = models.ForeignKey(NewsArticles, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.user.username} saved {self.article.title}"

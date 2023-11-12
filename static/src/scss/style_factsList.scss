@@ -2,13 +2,6 @@
 	padding-left: 50px;
 	border-radius: 10px;
 	position: relative;
-	#deleteFactBlock {
-		position: absolute;
-		right: 10px;
-		a {
-			z-index: 5;
-		}
-	}
 	#contentFactBlock {
 		padding-left: 25px;
 		margin-top: 25px;
@@ -34,5 +27,13 @@
 	}
 	li:nth-child(even) div:before {
 		border-color: $custom_darkgrey !important;
+	}
+}
+
+#deleteFactsBlock {
+	position: absolute;
+	right: 10px;
+	a {
+		z-index: 5;
 	}
 }
