@@ -418,7 +418,7 @@
   }
 }
 .body__card {
-  min-height: 70vh;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -539,6 +539,43 @@
   transform: translateY(0px);
 }
 
+.alternating-colors {
+  padding-left: 50px;
+  border-radius: 10px;
+  position: relative;
+}
+.alternating-colors #deleteFactBlock {
+  position: absolute;
+  right: 10px;
+}
+.alternating-colors #deleteFactBlock a {
+  z-index: 5;
+}
+.alternating-colors #contentFactBlock {
+  padding-left: 25px;
+  margin-top: 25px;
+  position: relative;
+}
+.alternating-colors #contentFactBlock:before {
+  content: "";
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 5px solid;
+  position: absolute;
+  box-shadow: 0 0 10px rgb(92, 92, 92);
+  top: -4px;
+  left: -38px;
+}
+
+.alternating-colors li:nth-child(odd) div:before {
+  border-color: rgb(223, 14, 14) !important;
+}
+.alternating-colors li:nth-child(even) div:before {
+  border-color: rgb(92, 92, 92) !important;
+}
+
 .nav-link {
   color: rgb(191, 191, 191);
 }
@@ -552,6 +589,13 @@ body {
   margin: 20px;
   box-shadow: 0 0 20px rgb(191, 191, 191);
   min-height: 95vh;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  border-radius: 10px;
+  z-index: 100;
 }
 
 #container_main {
@@ -589,12 +633,21 @@ footer {
 
 .logoString_h3 > h3 {
   color: rgb(223, 14, 14) !important;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   text-shadow: 0 0px 15px rgb(92, 92, 92);
 }
 
 .logInReg_mainpage {
   font-size: 1.3rem;
+}
+
+.no-content {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.5rem;
+  min-height: 70vh;
+}
+.no-content p {
+  text-shadow: 0 0px 15px rgb(92, 92, 92);
 }
 
 /*# sourceMappingURL=style.css.map */

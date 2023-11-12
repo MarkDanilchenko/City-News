@@ -28,3 +28,24 @@ class UserForm(UserCreationForm):
             "password2",
             "phone",
         )
+
+
+class FactForm(forms.ModelForm):
+    title = forms.CharField(
+        max_length=255,
+        required=True,
+        label="Title",
+        help_text="Title of the fact",
+    )
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={}),
+        max_length=1000,
+        required=True,
+        label="Description",
+        help_text="Description of the fact",
+    )
+
+    class Meta:
+        model = models.Fact
+        fields = ("title", "description")

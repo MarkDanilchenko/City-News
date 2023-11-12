@@ -28,7 +28,7 @@
 				</a>
 				<ul class="nav col-lg-8 col-md-6 col-12 mb-md-0 mb-3 d-flex justify-content-md-start justify-content-center align-items-center">
 					<li><a href="" class="nav-link px-2" title="Latest news">Latest news</a></li>
-					<li><a href="" class="nav-link px-2" title="Facts">Facts</a></li>
+					<li><a href="{% url 'facts' %}" class="nav-link px-2" title="Facts">Facts</a></li>
 					<li><a href="" class="nav-link px-2" title="Articles">Articles</a></li>
 				</ul>
 				{% if user.is_authenticated %}
@@ -119,11 +119,59 @@
 			<!-- MAIN -->
 			<!-- MAIN -->
 
-			{% block content %} 
+			{% block content %}
+			{% if user.is_authenticated %}
+			<div class="logoString_h3 text-center mt-5">
+				<h3>CityNews</h3>
+				<p>Choose one of the category</p>
+			  </div>
+			  <div class="body__card">
+				  <div class="container__card">
+					  <div class="box__card">
+						  <a href="" title="Latest news">
+							  <div class="imgBx">
+								  <img src="{% static 'IMG/News_bg.jpeg' %}" />
+							  </div>
+							  <div class="content__card">
+								  <div>
+									  <h2>News</h2>
+									  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
+								  </div>
+							  </div>
+						  </a>
+					  </div>
+					  <div class="box__card">
+						  <a href="{% url 'facts' %}" title="Facts">
+							  <div class="imgBx">
+								  <img src="{% static 'IMG/Facts_bg.jpg' %}" />
+							  </div>
+							  <div class="content__card">
+								  <div>
+									  <h2>Facts</h2>
+									  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
+								  </div>
+							  </div>
+						  </a>
+					  </div>
+					  <div class="box__card">
+						  <a href="" title="Articles">
+							  <div class="imgBx">
+								  <img src="{% static 'IMG/' %}" />
+							  </div>
+							  <div class="content__card">
+								  <div>
+									  <h2>Articles</h2>
+									  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
+								  </div>
+							  </div>
+						  </a>
+					  </div>
+				  </div>
+			  </div>
+			{% else %}
 			<!-- label_row -->
 			<!-- label_row -->
 			<!-- label_row -->
-
 			<div class="row mt-5" id="myHomework_labelRow">
 				<div id="myHomework_label">
 					<h2>
@@ -160,6 +208,7 @@
 				<span class="my-3">or</span>
 				<a href="{% url 'registration' %}" class="nav-link logInReg_mainpage" title="Register">Create an account!</a>
 			</div>
+			{% endif %}
 			{% endblock %}
 			<!-- FOOTER -->
 			<!-- FOOTER -->

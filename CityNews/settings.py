@@ -147,7 +147,7 @@ MEDIA_URL = "media/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/viewContent"
 LOGOUT_REDIRECT_URL = "/"
 
 # SECURE_CROSS_ORIGIN_OPENER_POLICY = None

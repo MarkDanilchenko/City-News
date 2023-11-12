@@ -28,3 +28,23 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.username}, email: ({self.email})"
 
+
+class Fact(models.Model):
+    title = models.CharField(
+        max_length=255,
+        unique=True,
+        blank=False,
+        null=False,
+        verbose_name="Title",
+        help_text="Title of the fact",
+    )
+    description = models.TextField(
+        max_length=1000,
+        blank=False,
+        null=False,
+        verbose_name="Description",
+        help_text="Description of the fact",
+    )
+
+    def __str__(self):
+        return self.title
