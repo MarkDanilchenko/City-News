@@ -5,7 +5,10 @@ from . import views
 urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html")),
     path('viewContent/', TemplateView.as_view(template_name="viewContent.html")),
+    # facts
     path('facts/', views.facts, name='facts'),
     re_path(r'^facts/delete/(?P<id>\d+)$', views.delete_facts, name='delete_facts'),
     path('facts/search', views.facts_search, name='facts_search'),
+    # News and Articles
+    path('newsArticles/', views.newsArticles, name='newsArticles'),
 ]

@@ -65,3 +65,10 @@ def facts_search(request):
         print("Error")
         result = models.Fact.objects.all()
         return render(request, "facts.html", {"result": result})
+
+# News Articles functions
+# News Articles functions
+# News Articles functions
+def newsArticles(request):
+    result = models.NewsArticle.objects.all()
+    return render(request, "newsArticles.html", {"result": result})
