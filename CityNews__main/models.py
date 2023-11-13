@@ -92,7 +92,7 @@ class NewsArticles(models.Model):
     )
 
     def __str__(self):
-        return f"News|Article: {self.title}"
+        return f"News&Article: {self.title}"
 
     class Meta:
         ordering = ["-publish_date"]
@@ -145,7 +145,7 @@ class SavedArticles(models.Model):
     article = models.ForeignKey(NewsArticles, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.username} saved {self.article.title}"
+        return f"{self.user.username} : -> {self.article.title}"
 
     class Meta:
         verbose_name_plural = "Saved Articles"

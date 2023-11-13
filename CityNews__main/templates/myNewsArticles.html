@@ -2,9 +2,9 @@
 <div class="row">
 	<div class="col-10 offset-1">
 		<div class="text-center logoString_h3 mt-3">
-			<h3 class="">News and Articles</h3>
+			<h3 class="">My Favorites</h3>
 		</div>
-		<form action="{% url 'newsArticles_search' %}" method="post" enctype="multipart/form-data" class="d-flex justify-content-center align-items-start mb-3">
+		<form action="{% url 'myNewsArticles_search' %}" method="post" enctype="multipart/form-data" class="d-flex justify-content-center align-items-start mb-3">
 			{% csrf_token %}
 			<div class="">
 				<input type="text" class="form-control" id="searchNewsArticles" name="searchNewsArticles" placeholder="&#128269;" style="text-align: right" aria-describedby="searchNewsArticles" />
@@ -12,12 +12,9 @@
 			</div>
 			<button type="submit" class="btn btn-outline-secondary ms-3">Search</button>
 		</form>
-		{% if user.is_superuser %}
-		<p class="text-small"><i>Add new and edit News and Articles only through the Admin panel!</i></p>
-		{% endif %}
 		<table class="table text-center table-striped table-hover table-responsive caption-top" id="newsArticlesTable">
 			<caption class="text-small">
-				<i>News and Articles</i>
+				<i>My Favorites</i>
 			</caption>
 			<thead style="cursor: pointer">
 				<tr>
@@ -26,41 +23,33 @@
 					<th scope="col">Publish Date &#9650; &#9660;</th>
 					<th scope="col">Author &#9650; &#9660;</th>
 					<th scope="col">#tags</th>
-					{% if user.is_superuser %}
 					<th scope="col">Delete</th>
-					{% endif %}
 				</tr>
 			</thead>
 			<tbody class="table-group-divider">
 				{% for i in result %}
 				<tr>
 					<td scope="row">{{ forloop.counter }}</td>
-					<td><a href="{% url 'newsArticles_detailed' i.id %}" class="nav-link"><b>{{ i.title }}</b></a></td>
-					<td>{{ i.publish_date|date:"Y-m-d" }}</td>
-					<td>{{ i.author }}</td>
-					<td>{{ i.tags }}</td>
-					{% if user.is_superuser %}
-					<td><a href="{% url 'delete_newsArticles' i.id %}" class="nav-link me-3">&#10060;</a></td>
-					{% endif %}
+					<td>
+						<a href="{% url 'newsArticles_detailed' i.article.id %}" class="nav-link"><b>{{ i.article.title }}</b></a>
+					</td>
+					<td>{{ i.article.publish_date|date:"Y-m-d" }}</td>
+					<td>{{ i.article.author }}</td>
+					<td>{{ i.article.tags }}</td>
+					<td><a href="{% url 'delete_myNewsArticles' i.id %}" class="nav-link me-3">&#10060;</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
 		</table>
-		{% if user.is_superuser %}
-		<p class="text-small"><i>Add new and edit News and Articles only through the Admin panel!</i></p>
-		{% endif %}
 	</div>
 </div>
 {% elif resultNotCorrect %}
 <div class="d-flex flex-column justify-content-center align-items-center no-content">
 	<p class="text-center">&#128532;<br /><b>{{resultNotCorrect}}...</b></p>
-    <a href="{% url 'newsArticles' %}" class="nav-link ms-3">Back</a>
+    <a href="{% url 'myNewsArticles' %}" class="nav-link ms-3">Back</a>
 </div>
 {% else %}
 <div class="d-flex flex-column justify-content-center align-items-center no-content">
 	<p class="text-center">&#128532;<br /><b>Sorry, but No content yet right here...</b></p>
 </div>
-{% if user.is_superuser %}
-<p class="text-small text-center"><i>Add new and edit News and Articles only through the Admin panel!</i></p>
-{% endif %} 
 {% endif %} {% endautoescape %} {% endblock %}
