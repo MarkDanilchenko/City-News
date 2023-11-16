@@ -9,3 +9,13 @@ class SavedArticlesSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.SavedArticles
         fields = "__all__"
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(
+        slug_field="username", read_only=True, many=False
+    )
+
+    class Meta:
+        model = models.Comment
+        fields = "__all__"

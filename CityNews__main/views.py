@@ -179,7 +179,8 @@ def myNewsArticles_search(request):
 def newsArticles_detailed(request, id):
     try:
         result = models.NewsArticles.objects.get(id=id)
-        return render(request, "newsArticlesDetailed.html", {"result": result})
+        commentsCount = models.Comment.objects.filter(article__id=id).count()
+        return render(request, "newsArticlesDetailed.html", {"result": result, "commentsCount": commentsCount})
     except:
         result = models.NewsArticles.objects.all()
         return render(request, "newsArticles.html", {"result": result})
@@ -188,7 +189,12 @@ def newsArticles_detailed(request, id):
 def addToFavorites_NewsArticles(request, id):
     try:
         article = models.NewsArticles.objects.get(id=id)
-        models.SavedArticles.objects.create(user=request.user, article=article)
+        if models.SavedArticles.objects.filter(user=request.user, article=article):
+            pass
+        else:
+            models.SavedArticles.objects.create(user=request.user, article=article)
         return redirect(f"/newsArticles/detailed/{id}")
     except:
         return redirect(f"/newsArticles/detailed/{id}")
+
+

@@ -651,4 +651,8 @@ footer {
   text-shadow: 0 0px 15px rgb(92, 92, 92);
 }
 
+.card {
+  box-shadow: 0 0 15px rgb(191, 191, 191);
+}
+
 /*# sourceMappingURL=style.css.map */

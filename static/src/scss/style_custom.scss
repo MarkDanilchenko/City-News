@@ -74,3 +74,12 @@ footer {
 	}
 	min-height: 70vh;
 }
+
+.card {
+	box-shadow: 0 0 15px $custom_grey;
+}
+
+// .card::after {
+// 	content: '';
+
+// }

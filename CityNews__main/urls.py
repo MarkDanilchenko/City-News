@@ -5,6 +5,7 @@ from .API import views as views__API
 from rest_framework import routers
 
 router = routers.DefaultRouter()
+router.register("comments", views__API.CommentViewSet)
 
 
 urlpatterns = [
@@ -12,7 +13,6 @@ urlpatterns = [
     # common
     # common
     path("", TemplateView.as_view(template_name="index.html")),
-    path("API/", include(router.urls)),
     path("viewContent/", TemplateView.as_view(template_name="viewContent.html")),
     # facts
     # facts
@@ -36,7 +36,11 @@ urlpatterns = [
         name="delete_newsArticles",
     ),
     path("newsArticles/search", views.newsArticles_search, name="newsArticles_search"),
-    path('myNewsArticles/search', views.myNewsArticles_search, name='myNewsArticles_search'),
+    path(
+        "myNewsArticles/search",
+        views.myNewsArticles_search,
+        name="myNewsArticles_search",
+    ),
     re_path(
         r"^newsArticles/detailed/(?P<id>\d+)$",
         views.newsArticles_detailed,
@@ -47,4 +51,8 @@ urlpatterns = [
         views.addToFavorites_NewsArticles,
         name="addToFavorites_NewsArticles",
     ),
+    # API
+    # API
+    # API
+    path("API/", include(router.urls)),
 ]

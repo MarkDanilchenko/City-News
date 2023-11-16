@@ -32,24 +32,8 @@
 					<li><a href="{% url 'myNewsArticles' %}" class="nav-link px-2" title="My favourites">My favourites</a></li>
 				</ul>
 				{% if user.is_authenticated %}
-				<h6 class="text-center col-md-auto col-12 mb-md-0 mb-3" id="headerGreeting" style="color: rgb(92, 92, 92)">
-					Hi, {{user.username}}!
-				</h6>
+				<h6 class="text-center col-md-auto col-12 mb-md-0 mb-3" id="headerGreeting" style="color: rgb(92, 92, 92)">Hi, {{user.username}}!</h6>
 				<div class="d-flex justify-content-end col-md-auto offset-md-0 col-10 offset-2">
-					<!-- <form action="#" method="post" class="col-7 me-2" role="search">
-						{% csrf_token %}
-						<div class="form-floating">
-							<input
-								type="search"
-								id="search_field"
-								name="search_field"
-								class="form-control"
-								placeholder="..."
-								aria-label="Search filed"
-							/>
-							<label for="search_field"><i>Search field:</i></label>
-						</div>
-					</form> -->
 					<a href="{% url 'logout' %}" class="btn btn-outline-danger text-center me-3" style="height: 3.5rem; padding-top: 0.85rem" title="Logout">Logout</a>
 					<!-- dark/light theme switch button -->
 					<div id="colorThemeSwitcher" class="d-flex align-items-center">
@@ -119,42 +103,41 @@
 			<!-- MAIN -->
 			<!-- MAIN -->
 
-			{% block content %}
-			{% if user.is_authenticated %}
+			{% block content %} {% if user.is_authenticated %}
 			<div class="logoString_h3 text-center mt-5">
 				<h3>CityNews</h3>
 				<p>Choose one of the category</p>
-			  </div>
-			  <div class="body__card">
-				  <div class="container__card">
-					  <div class="box__card">
-						  <a href="{% url 'newsArticles' %}" title="News and Articles">
-							  <div class="imgBx">
-								  <img src="{% static 'IMG/News_bg.jpeg' %}" />
-							  </div>
-							  <div class="content__card">
-								  <div>
-									  <h2>News & Articles</h2>
-									  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
-								  </div>
-							  </div>
-						  </a>
-					  </div>
-					  <div class="box__card">
-						  <a href="{% url 'facts' %}" title="Facts">
-							  <div class="imgBx">
-								  <img src="{% static 'IMG/Facts_bg.jpg' %}" />
-							  </div>
-							  <div class="content__card">
-								  <div>
-									  <h2>Facts</h2>
-									  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
-								  </div>
-							  </div>
-						  </a>
-					  </div>
-				  </div>
-			  </div>
+			</div>
+			<div class="body__card">
+				<div class="container__card">
+					<div class="box__card">
+						<a href="{% url 'newsArticles' %}" title="News and Articles">
+							<div class="imgBx">
+								<img src="{% static 'IMG/News_bg.jpeg' %}" />
+							</div>
+							<div class="content__card">
+								<div>
+									<h2>News & Articles</h2>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="box__card">
+						<a href="{% url 'facts' %}" title="Facts">
+							<div class="imgBx">
+								<img src="{% static 'IMG/Facts_bg.jpg' %}" />
+							</div>
+							<div class="content__card">
+								<div>
+									<h2>Facts</h2>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
 			{% else %}
 			<!-- label_row -->
 			<!-- label_row -->
@@ -195,8 +178,7 @@
 				<span class="my-3">or</span>
 				<a href="{% url 'registration' %}" class="nav-link logInReg_mainpage" title="Register">Create an account!</a>
 			</div>
-			{% endif %}
-			{% endblock %}
+			{% endif %} {% endblock %}
 			<!-- FOOTER -->
 			<!-- FOOTER -->
 			<!-- FOOTER -->
@@ -216,10 +198,7 @@
 	</body>
 	<!-- <a href="https://ru.freepik.com/free-vector/did-you-know-interesting-fact-banner-with-megaphone_26569045.htm#query=facts&position=39&from_view=search&track=sph">Изображение от starline</a> на Freepik -->
 	<!-- Изображение от <a href="https://ru.freepik.com/free-photo/newspaper-background-concept_29016024.htm#page=3&query=news&position=2&from_view=search&track=sph">Freepik</a> -->
-	
 </html>
-
-
 
 <!-- Lorem ipsum dolor 
 	sit amet consectetur adipisicing elit. Velit, consectetur, omnis libero
