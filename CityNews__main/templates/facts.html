@@ -35,6 +35,11 @@
 		{% endif %}
 	</div>
 </div>
+{% elif resultNotCorrect %}
+<div class="d-flex flex-column justify-content-center align-items-center no-content">
+	<p class="text-center">&#128532;<br /><b>{{resultNotCorrect}}...</b></p>
+    <a href="{% url 'facts' %}" class="nav-link ms-3">Back</a>
+</div>
 {% else %}
 <div class="d-flex flex-column justify-content-center align-items-center no-content">
 	<p class="text-center">&#128532;<br /><b>Sorry, but No content yet right here...</b></p>

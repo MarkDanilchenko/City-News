@@ -29,7 +29,9 @@
 				<ul class="nav col-lg-8 col-md-6 col-12 mb-md-0 mb-3 d-flex justify-content-md-start justify-content-center align-items-center">
 					<li><a href="{% url 'newsArticles' %}" class="nav-link px-2" title="News and Articles">News & Articles</a></li>
 					<li><a href="{% url 'facts' %}" class="nav-link px-2" title="Facts">Facts</a></li>
+					{% if user.is_authenticated %}
 					<li><a href="{% url 'myNewsArticles' %}" class="nav-link px-2" title="My favourites">My favourites</a></li>
+					{% endif %}
 				</ul>
 				{% if user.is_authenticated %}
 				<h6 class="text-center col-md-auto col-12 mb-md-0 mb-3" id="headerGreeting" style="color: rgb(92, 92, 92)">Hi, {{user.username}}!</h6>

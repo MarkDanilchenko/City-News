@@ -12,6 +12,7 @@
 			</div>
 			<button type="submit" class="btn btn-outline-secondary ms-3">Search</button>
 		</form>
+		<p class="text-small text-center text-muted mt-5"><i>Click on a title to see detailed information.</i></p>
 		<table class="table text-center table-striped table-hover table-responsive caption-top" id="newsArticlesTable">
 			<caption class="text-small">
 				<i>My Favorites</i>
@@ -41,15 +42,22 @@
 				{% endfor %}
 			</tbody>
 		</table>
+		<div class="d-flex flex-column justify-content-center align-items-center">
+			<a href="{% url 'newsArticles' %}" class="nav-link ms-3">Back</a>
+		</div>
 	</div>
 </div>
 {% elif resultNotCorrect %}
 <div class="d-flex flex-column justify-content-center align-items-center no-content">
 	<p class="text-center">&#128532;<br /><b>{{resultNotCorrect}}...</b></p>
-    <a href="{% url 'myNewsArticles' %}" class="nav-link ms-3">Back</a>
+	<a href="{% url 'myNewsArticles' %}" class="nav-link ms-3">Back</a>
 </div>
 {% else %}
 <div class="d-flex flex-column justify-content-center align-items-center no-content">
 	<p class="text-center">&#128532;<br /><b>Sorry, but No content yet right here...</b></p>
+	<a href="{% url 'newsArticles' %}" class="nav-link ms-3 text-center"
+		>Back to <br />
+		News and Articles list page</a
+	>
 </div>
 {% endif %} {% endautoescape %} {% endblock %}

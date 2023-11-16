@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from fuzzywuzzy import fuzz, process
 from . import forms, models
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 
 
 # registration
@@ -20,7 +21,7 @@ def registration(request):
             return redirect("/")
     else:
         form = forms.UserForm()
-    return render(request, "registration.html", {"form": form})
+    return render(request, "registration/registration.html", {"form": form})
 
 
 # Facts functions
@@ -59,6 +60,10 @@ def facts_search(request):
                 else:
                     result = result.exclude(id=i[0])
             else:
+                if len(result) == 0:
+                    return render(
+                        request, "facts.html", {"resultNotCorrect": "No facts found"}
+                    )
                 return render(request, "facts.html", {"result": result.values()})
     except:
         result = models.Fact.objects.all()
@@ -73,6 +78,7 @@ def newsArticles(request):
     return render(request, "newsArticles.html", {"result": result})
 
 
+@login_required
 def myNewsArticles(request):
     result = models.SavedArticles.objects.filter(user=request.user)
     return render(request, "myNewsArticles.html", {"result": result})
@@ -81,14 +87,14 @@ def myNewsArticles(request):
 @staff_member_required
 def delete_newsArticles(request, id):
     try:
-        if models.NewsArticle.objects.get(id=id):
-            models.NewsArticle.objects.get(id=id).delete()
-            result = models.NewsArticle.objects.all()
+        if models.NewsArticles.objects.get(id=id):
+            models.NewsArticles.objects.get(id=id).delete()
+            result = models.NewsArticles.objects.all()
             return render(request, "newsArticles.html", {"result": result})
         else:
             raise Exception
     except:
-        result = models.NewsArticle.objects.all()
+        result = models.NewsArticles.objects.all()
         return render(request, "newsArticles.html", {"result": result})
 
 
@@ -180,12 +186,16 @@ def newsArticles_detailed(request, id):
     try:
         result = models.NewsArticles.objects.get(id=id)
         commentsCount = models.Comment.objects.filter(article__id=id).count()
-        return render(request, "newsArticlesDetailed.html", {"result": result, "commentsCount": commentsCount})
+        return render(
+            request,
+            "newsArticlesDetailed.html",
+            {"result": result, "commentsCount": commentsCount},
+        )
     except:
         result = models.NewsArticles.objects.all()
         return render(request, "newsArticles.html", {"result": result})
 
-
+@login_required
 def addToFavorites_NewsArticles(request, id):
     try:
         article = models.NewsArticles.objects.get(id=id)
@@ -196,5 +206,3 @@ def addToFavorites_NewsArticles(request, id):
         return redirect(f"/newsArticles/detailed/{id}")
     except:
         return redirect(f"/newsArticles/detailed/{id}")
-
-
