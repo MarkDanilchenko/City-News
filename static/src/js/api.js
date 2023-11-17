@@ -1,8 +1,5 @@
-// docker _HostPort
-// const server_HostPort = process.env.server_HostPort;
-// localhost _HostPort
-const server_HostPort = '127.0.0.1:8000';
-
+// docker _HostPort or localhost _HostPort
+const server_HostPort = process.env.server_HostPort || '127.0.0.1:8000';
 // URLS
 // URLS
 // URLS
@@ -68,9 +65,9 @@ if (addComment_form) {
 	addComment_form.addEventListener('submit', (e) => {
 		e.preventDefault();
 		const formData = new FormData(addComment_form);
-        if (formData.get('text') == '') {
-            return;
-        }
+		if (formData.get('text') == '') {
+			return;
+		}
 		fetch(URL_addComment, {
 			method: 'POST',
 			headers: {
@@ -109,6 +106,7 @@ if (addComment_form) {
 									)}
                                                 `;
 					}
+					$('#floatingTextarea2').val('');
 				}
 			})
 			.catch((error) => {

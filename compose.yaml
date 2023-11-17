@@ -25,8 +25,8 @@ services:
         ports:
             - 3307:3306
         volumes:
-            - db_data:/var/lib/mysql
-            - ./CityNews.sql:/docker-entrypoint-initdb.d/CityNews.sql
+            - ./db_data:/var/lib/mysql
+            # - ./CityNews.sql:/docker-entrypoint-initdb.d/CityNews.sql
         healthcheck:
             test: ['CMD', 'mysqladmin', 'ping', '-h', '127.0.0.1']
             interval: 5s
