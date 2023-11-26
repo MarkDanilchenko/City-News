@@ -1,0 +1,39 @@
+.alternating-colors {
+	padding-left: 50px;
+	border-radius: 10px;
+	position: relative;
+	#contentFactBlock {
+		padding-left: 25px;
+		margin-top: 25px;
+		position: relative;
+		&:before {
+			content: '';
+			display: block;
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			border: 5px solid;
+			position: absolute;
+			box-shadow: 0 0 10px $custom_darkgrey;
+			top: -4px;
+			left: -38px;
+		}
+	}
+}
+
+.alternating-colors {
+	li:nth-child(odd) div:before {
+		border-color: $custom_red !important;
+	}
+	li:nth-child(even) div:before {
+		border-color: $custom_darkgrey !important;
+	}
+}
+
+#deleteFactsBlock {
+	position: absolute;
+	right: 10px;
+	a {
+		z-index: 5;
+	}
+}

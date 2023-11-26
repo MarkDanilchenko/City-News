@@ -1,4 +1,5 @@
 draft.*
+settings_dev.py
 ### Django template
 *.log
 *.pot
@@ -13,7 +14,7 @@ package-lock.json
 # media
 *.pdf
 *.sql
-!CityNews.sql
+# !CityNews.sql
 db_data/
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os, dotenv, pymysql
+import os, dotenv, pymysql, dj_database_url
 
 pymysql.install_as_MySQLdb()
 
@@ -24,10 +24,10 @@ dotenv.load_dotenv(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-8h&ig&_2ss*18f%b8w3!!x07)y(^s1r#0v_t2u(bs4(6uq@-y5"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", True)
 
 ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 
@@ -52,6 +52,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -96,6 +97,9 @@ DATABASES = {
     }
 }
 
+db_from_env = dj_database_url.config()
+DATABASES["default"].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -124,6 +128,8 @@ LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "Europe/Moscow"
 
+USE_L10N = True
+
 USE_I18N = True
 
 USE_TZ = True
@@ -135,12 +141,12 @@ USE_TZ = True
 STATICFILES_DIRS = [
     BASE_DIR / "./static",
 ]
+STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_ROOT = BASE_DIR / "./media"
-
-STATIC_URL = "static/"
 MEDIA_URL = "media/"
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

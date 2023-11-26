@@ -1,5 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
+from django.views import generic
 from fuzzywuzzy import fuzz, process
 from . import forms, models
 from django.contrib.admin.views.decorators import staff_member_required
@@ -28,8 +29,11 @@ def registration(request):
 # Facts functions
 # Facts functions
 def facts(request):
-    result = models.Fact.objects.all()
+    result = models.Fact.objects.all().order_by('title')
     return render(request, "facts.html", {"result": result})
+# class FactListView(generic.ListView):
+#     model = models.Fact
+#     paginate_by = 3
 
 
 @staff_member_required

@@ -35,6 +35,10 @@ class FactAdmin(admin.ModelAdmin):
 admin.site.register(models.Fact, FactAdmin)
 
 
+class CommentAdminInline(admin.TabularInline):
+    model = models.Comment
+
+
 class NewsArticlesAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Title", {"fields": ("title",)}),
@@ -47,6 +51,8 @@ class NewsArticlesAdmin(admin.ModelAdmin):
     list_display = ("title", "author", "tags", "publish_date")
     list_filter = ("title", "publish_date")
     search_fields = ("title", "tags", "author")
+
+    inlines = [CommentAdminInline]
 
 
 admin.site.register(models.NewsArticles, NewsArticlesAdmin)

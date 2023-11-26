@@ -18,6 +18,7 @@ urlpatterns = [
     # facts
     # facts
     path("facts/", views.facts, name="facts"),
+    # path("facts/", views.FactListView.as_view(), name="facts"),
     re_path(r"^facts/delete/(?P<id>\d+)$", views.delete_facts, name="delete_facts"),
     path("facts/search", views.facts_search, name="facts_search"),
     # News and Articles

@@ -1,0 +1,85 @@
+.nav-link {
+	color: $custom_grey;
+}
+
+.nav-link:hover {
+	color: $custom_red;
+}
+
+body {
+	border-radius: 15px;
+	margin: 20px;
+	box-shadow: 0 0 20px $custom_grey;
+	min-height: 95vh;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	border-radius: 10px;
+	z-index: 100;
+}
+
+#container_main {
+	min-height: 95vh;
+}
+
+// space block after #myHomework_labelRow
+#myHomework_labelRow + div {
+	position: relative;
+	top: 25px;
+}
+
+footer {
+	position: sticky;
+	top: 95%;
+}
+
+@media screen and (min-width: 600px) {
+	.myHomework_labelBr {
+		display: none;
+	}
+	#myHomework_label {
+		font-family: $font-family-JetBrains;
+		height: 150px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: unset;
+	}
+}
+
+.logoString_h3,
+.logoString_h5,
+#headerGreeting {
+	font-family: $font-family-JetBrains;
+}
+
+.logoString_h3 > h3 {
+	color: $custom_red !important;
+	font-size: 2.5rem;
+	text-shadow: 0 0px 15px $custom_darkgrey;
+}
+
+.logInReg_mainpage {
+	font-size: 1.3rem;
+}
+
+// classStyle for pages wehere there is no content
+.no-content {
+	font-family: $font-family-JetBrains;
+	font-size: 1.5rem;
+	p {
+		text-shadow: 0 0px 15px $custom_darkgrey;
+	}
+	min-height: 70vh;
+}
+
+.card {
+	box-shadow: 0 0 15px $custom_grey;
+}
+
+// .card::after {
+// 	content: '';
+
+// }
