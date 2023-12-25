@@ -21,6 +21,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     def addComment(self, request):
         if not request.user.is_authenticated:
             return response.Response({"message": "Only registered users can add comments"})
+        # if comment filed is empty: dont send form
         elif request.data["text"] == "":
             return
         else:
@@ -30,6 +31,7 @@ class CommentViewSet(viewsets.ModelViewSet):
                 author=request.user,
                 article=models.NewsArticles.objects.get(id=request.data["id"]),
             )
+            # get last added comment of the article
             result = models.Comment.objects.filter(
                 article__id=request.data["id"]
             ).order_by("publish_date")
